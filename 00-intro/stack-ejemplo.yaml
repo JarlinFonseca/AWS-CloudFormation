@@ -10,4 +10,24 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties: 
       ImageId: "ami-08a52ddb321b32a8c"
+      KeyName: "keypair-pruebas-cf2"
+      InstanceType: "t3.micro"
+      SecurityGroupIds:
+        - Ref: SecurityGroupSSH
+
+  SecurityGroupSSH:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group que permite acceso SSH
+      VpcId: "vpc-0d566183548ec1274"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: -1
+          FromPort: 0
+          ToPort: 0
+          CidrIp: 0.0.0.0/0
 
