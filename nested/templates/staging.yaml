@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Este stack va a crear
+  una instancia y todo lo
+  que necesita staging
+Resources:
+  WebServerNestedstack:
+    Type: AWS::CloudFormation::Stack
+    Properties: 
+      TemplateURL: "https://vcc-cf-templates-test.s3.amazonaws.com/nested/webserver.yaml"
+      Parameters: 
+        KeyPairParameter: "keypair-pruebas-cf2"
+        VpcIdParameter: "vpc-0d566183548ec1274"
+        AmiIdParameter: "ami-08a52ddb321b32a8c"
